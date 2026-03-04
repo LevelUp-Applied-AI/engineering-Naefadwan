@@ -2,7 +2,9 @@
 
 ## Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context.
+Summarize what changed and why. Be specific — mention the files, functions, or modules affected and explain the problem this PR solves or the feature it adds. Give reviewers enough context so they don't need to dig through Slack or issues to understand the change.
+
+**Example:** "Updated `parse_csv()` in `utils.py` to raise a `ValueError` on missing headers instead of silently returning `None`. This fixes a bug where downstream code crashed with an unhelpful `AttributeError`."
 
 Fixes # (issue)
 
@@ -17,10 +19,13 @@ Please delete options that are not relevant.
 
 ## How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. 
+1. Activate the virtual environment: `source .venv/bin/activate` (Mac/Linux) or `source .venv/Scripts/activate` (Windows)
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the test suite: `pytest`
+4. Confirm expected output — describe what success looks like (e.g., "All 24 tests pass, including the new `test_missing_header` case")
 
-- [ ] Test A
-- [ ] Test B
+- [ ] Existing tests pass locally (`pytest` exits with no failures)
+- [ ] New tests added that cover the changed behavior
 
 ## Checklist:
 
