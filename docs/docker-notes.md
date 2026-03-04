@@ -1,6 +1,9 @@
-Template: docs/docker-notes.md
 # Docker Notes — Day 9
-
+Images below shows docker meomery And size allocation using .wslconfig
+![alt text](ResourceDocker.jpeg)
+![alt text](SizeAllocater.jpg)
+image below shows Wsl2 enabeld with wsl2 enabeld the size management is handeld by the system itself
+![alt text](WSL2enabeld.jpg)
 ## Docker Version
 docker version
 Client:
@@ -206,24 +209,26 @@ Issues Encountered
 [Describe any configuration issues and how you resolved them, or write “None”]
 Issue 1: System-wide Docker memory limit
 
-Problem: Docker Desktop was using default memory allocation (2GB), which was insufficient for your development
-Resolution: I created a .wslconfig file at C:\Users\adwan\.wslconfig with memory=8GB setting
-Why: I determined you were running WSL 2 backend, which requires memory limits to be configured at the WSL level, not in the Docker Desktop UI
+Problem: Docker Desktop was using default memory allocation (2GB)
+Resolution: created a .wslconfig file at C:\Users\adwan\.wslconfig with memory=8GB setting
+Why: running WSL 2 backend, which requires memory limits to be configured at the WSL level, not in the Docker Desktop UI
+
 Issue 2: WSL 2 configuration file didn't exist
 
 Problem: No .wslconfig file was present on your system
-Resolution: created a new file with optimal defaults (8GB memory, 1GB swap, 4 processors)
+Resolution: created a new file with optimal defaults (8GB memory, 4 processors)
 Why: WSL 2 needs explicit configuration; it doesn't have UI controls like Hyper-V backend does
+
 Issue 3: Disk image size setting not visible
 
-Problem: You couldn't find the disk image size slider in Docker Desktop settings
-Resolution: I explained that WSL 2 auto-manages disk allocation; the VHD expands as needed
-Why: I clarified that WSL 2 backend handles disk differently than Hyper-V—there's no manual slider available
+Problem: couldn't find the disk image size slider in Docker Desktop settings
+Resolution:WSL 2 auto-manages disk allocation; the VHD expands as needed
+Why: WSL 2 backend handles disk differently than Hyper-V—there's no manual slider available
+
 Issue 4: PowerShell docker run syntax error
 
 Problem: Your multi-line docker run command failed with "Missing expression after unary operator '--'" error
 Resolution: I provided the single-line format: docker run -d --name pg-prework -e POSTGRES_PASSWORD=prework -p 5432:5432 postgres:15-alpine
-Why: I recognized that PowerShell interprets -- as a separate operator; single-line format or backticks work best
-All issues are now resolved. Your system is optimized with 8GB memory allocated and ready for development.
-
+Why: PowerShell interprets -- as a separate operator; single-line format or backticks work best
+All issues are now resolved.
 ---
